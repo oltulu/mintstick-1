@@ -1,4 +1,5 @@
 #!/usr/bin/python2
+# -*- coding: UTF-8 -*-
 
 import commands
 from subprocess import Popen,PIPE,call,STDOUT
@@ -56,24 +57,24 @@ def main():
         opts, args = getopt.getopt(sys.argv[1:], "hd:f:l:u:g:", ["help", "device=","filesystem=","label=","uid=","gid="])
     except getopt.error, msg:
         print msg
-        print "for help use --help"
+        print "yardım için --help"
         sys.exit(2)
 
     for o, a in opts:
         if o in ("-h", "--help"):
-            print "Usage: %s -d device -f filesystem -l volume_label\n"  % sys.argv[0]
-            print "-d|--device          : device path"
+            print "Kullanımı: %s -d device -f filesystem -l volume_label\n"  % sys.argv[0]
+            print "-d|--device          : aygıt yolu"
             print "-f|--filesystem      : filesystem\n"
-            print "-l|--label           : volume label\n"
-            print "-u|--uid             : uid of user\n"
-            print "-g|--gid             : gid of user\n"
-            print "Example : %s -d /dev/sdj -f fat32 -l \"USB Stick\" -u 1000 -g 1000" % sys.argv[0]
+            print "-l|--label           : bölüm etiketi\n"
+            print "-u|--uid             : kullanıcı uid\n"
+            print "-g|--gid             : kullanıcı gid\n"
+            print "Örnek : %s -d /dev/sdj -f fat32 -l \"USB Bellek\" -u 1000 -g 1000" % sys.argv[0]
             sys.exit(0)
         elif o in ("-d"):
             device = a
         elif o in ("-f"):
             if a not in [ "fat32", "ntfs", "ext4" ]:
-                print "Specify fat32, ntfs or ext4"
+                print "fat32 belirle, ntfs veya ext4"
                 sys.exit(3)
             fstype = a
         elif o in ("-l"):
@@ -85,8 +86,8 @@ def main():
 
     argc = len(sys.argv)
     if argc < 11:
-      print "Too few arguments"
-      print "for help use --help"
+      print "Çok az argüman"
+      print "yardım için --help"
       exit(2)
 
     raw_format(device, fstype, label, uid, gid)

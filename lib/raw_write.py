@@ -1,4 +1,5 @@
 #!/usr/bin/python2
+# -*- coding: UTF-8 -*-
 
 import commands
 from subprocess import Popen,PIPE,call,STDOUT
@@ -58,15 +59,15 @@ def main():
         opts, args = getopt.getopt(sys.argv[1:], "hs:t:", ["help", "source=","target="])
     except getopt.error, msg:
         print msg
-        print "for help use --help"
+        print "yardım için --help"
         sys.exit(2)
 
     for o, a in opts:
         if o in ("-h", "--help"):
-            print "Usage: %s -s source -t target\n" % sys.argv[0]
-            print "-s|--source          : source iso path"
-            print "-t|--target          : target device path\n"
-            print "Example : %s -s /foo/image.iso -t /dev/sdj" % sys.argv[0]
+            print "Kullanımı: %s -s source -t target\n" % sys.argv[0]
+            print "-s|--source          : kaynak iso yolu"
+            print "-t|--target          : hedef aygıt yolu\n"
+            print "Örnek : %s -s /foo/image.iso -t /dev/sdj" % sys.argv[0]
             sys.exit(0)
         elif o in ("-s"):
             source = a
@@ -75,8 +76,8 @@ def main():
 
     argc = len(sys.argv)
     if argc < 5:
-        print "Too few arguments"
-        print "for help use --help"
+        print "Çok az argüman"
+        print "yardım için --help"
         exit(2)
 
     raw_write(source, target)
